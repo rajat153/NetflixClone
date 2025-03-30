@@ -11,4 +11,4 @@ export const API_CONSTANTS ={
 
 //https://thingproxy.freeboard.io/fetch/Your_URL for proxying the API call
 
-export const API_CONSTANT = "9a98d46d40f53d7a02a68e1c04832bc2"
+export const API_CONSTANT = "9a98d46d40f53d7a02a68e1c04832bc2";
