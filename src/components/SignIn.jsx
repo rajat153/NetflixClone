@@ -23,7 +23,7 @@ const SignIn = () => {
   }
 
   const handleClick = () => {
-    const msg = validate(email.current.value, password.current.value, name.current.value)
+    const msg = validate(email.current.value, password.current.value)
     setErrorMsg(msg)
     if(msg) return;
 
@@ -39,6 +39,7 @@ const SignIn = () => {
             // Profile updated!
             dispatch(addUser({uid :uid, email, displayName, photoURL}))
           }).catch((error) => {
+            console.log(error)
             // An error occurred
 
           });
