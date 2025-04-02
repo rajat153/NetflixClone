@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../../utils/userSlice';
 import { LOGO, USER_DEFAULT_LOGO } from "../../utils/constants";
+import { toggleGptSearchView } from "../../utils/gptSlice";
+import { SUPPORTED_LNG } from "../../utils/constants";
+import { changLang } from "../../utils/configSlice";
 
 const Header = () => {
 
@@ -27,20 +30,37 @@ const Header = () => {
   const user = useSelector(store => store.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const showGptSearch = useSelector(store=>store.gpt.showGptSearch)
   
   const handleClick  = () => {
     signOut(auth).then(() => {
         navigate('/')
         // Sign-out successful.
       }).catch((error) => {
+        console.log(error)
         // An error happened.
       }); 
   }
+
+  const handleGPTSeach = () => {
+    dispatch(toggleGptSearchView())
+  }
+
+  const handleLngChng = (e) =>{
+    dispatch(changLang(e.target.value))
+  }
+
   return (
     <div className='absolute flex justify-between w-screen px-24 py-2 bg-gradient-to-b from-black z-10'>
         <img className = 'w-44' src={LOGO} alt="netflix logo" />
-        { user && <div className="p-2">
-            <p>{user?.displayName}</p>
+        { user && <div className="p-2 flex">
+         {showGptSearch && <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLngChng}>
+          {SUPPORTED_LNG.map((item)=>{
+            return <option key = {item.identifier} value={item.identifier}>{item.name}</option>
+          })}
+         </select>}
+         <p>{user?.displayName}</p>
+         <button onClick={handleGPTSeach} className="py-2 px-4 mx-4 bg-purple-500 text-white rounded-lg cursor-pointer">{showGptSearch ? 'HomePage' : 'GPT Search' }</button>
          <img className="w-12" src= {USER_DEFAULT_LOGO} alt="" />
          <button onClick={handleClick}>SignOut</button>
         </div>}
