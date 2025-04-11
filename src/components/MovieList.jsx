@@ -6,7 +6,7 @@ const MovieList = ({title, movies}) => {
   return (
     <div className='px-6'>
     <h1 className='text-2xl py-4 text-white'>{title}</h1>
-   <div className='flex overflow-x-scroll'>
+   <div className='flex overflow-x-scroll' style={{scrollbarWidth : 'none'}}>
     <div className='flex'>
       {movies && movies.map((movie) => (<MovieCard key={movie.id} posterPath={movie.poster_path}/>))} 
     {/* <MovieCard posterPath={movies[0].poster_path}/> */}
@@ -17,4 +17,4 @@ const MovieList = ({title, movies}) => {
   )
 }
 
-export default MovieList
+export default MovieList;

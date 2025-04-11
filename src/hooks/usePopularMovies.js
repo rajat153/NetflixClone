@@ -1,6 +1,6 @@
 
 import { useDispatch } from "react-redux";
-import { API_CONSTANT } from "../../utils/constants";
+import { localURL, liveURL } from "../../utils/url";
 import  {useEffect} from 'react';
 import { addPopularMovies } from "../../utils/moviesSlice";
 
@@ -16,7 +16,7 @@ const usePopularMovies = () => {
     const fetchDatawithRetry = async(retries= 3) =>{
         for(let attempt = 1; attempt <= retries; attempt++){
           try{
-            let response = await fetch (`https://thingproxy.freeboard.io/fetch/https://api.themoviedb.org/3/movie/popular?api_key=${API_CONSTANT}&page=1`)
+            let response = await fetch (`${liveURL}/api/tmdbpopularmovies`)
             if(!response.ok) throw new Error("Server error");
             const data = await response.json();
             dispatch(addPopularMovies(data?.results))
