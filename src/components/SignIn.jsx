@@ -19,7 +19,9 @@ const SignIn = () => {
   const name = useRef("");
 
   const toggleSignInForm = () => {
-    setIsSignInForm(!isSignInForm)
+    setIsSignInForm(!isSignInForm);
+    email.current.value = '';
+    password.current.value = '';
   }
 
   const handleClick = () => {
@@ -63,6 +65,13 @@ const SignIn = () => {
         });
     }
   }
+
+  const submitGuestUserDetails = () =>{
+    if (email.current && password.current) {
+      email.current.value = "vijay123@gmail.com";
+      password.current.value = "Vijay123@";
+    }
+  }
   return (
     <div>
       <Header/>
@@ -81,7 +90,8 @@ const SignIn = () => {
         <u className="m-2 block text-center">Forgot password?</u>
         <input className="absolute h-6 w-6 mx-2 rounded accent-gray-700 bg-black cursor-pointer" type="checkbox" id="remember" name="remember"  />
         <label className = "mx-10" htmlFor="remember">Remember me</label> 
-        <p className = "mx-2 py-4 cursor-pointer text-gray-400" onClick={toggleSignInForm}>{isSignInForm ? <>New to Netflix?<span className="text-white">Sign up now.</span></> : `Already registered ? Sign In now`}</p>
+        <p className = "mx-2 py-2 cursor-pointer text-gray-400" onClick={toggleSignInForm}>{isSignInForm ? <>New to Netflix?<span className="text-white">Sign up now.</span></> : `Already registered ? Sign In now`}</p>
+        {isSignInForm && <p className = "mx-2 pb-2 cursor-pointer" onClick={submitGuestUserDetails}>Login As Guest</p>}
         <p className="text-gray-400 mx-2 text-sm">This page is protected by Google reCAPTCHA to ensure you are not a bot.</p>
         <a href="" className="underline text-blue-600 mx-2 text-sm">Learn more</a>
       </form>
