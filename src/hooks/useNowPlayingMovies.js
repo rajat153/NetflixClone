@@ -1,5 +1,5 @@
 
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import  {useEffect} from 'react';
 import { localURL, liveURL } from "../../utils/url";
 import { addNowPlayingMovies } from "../../utils/moviesSlice";
@@ -8,8 +8,10 @@ import { addNowPlayingMovies } from "../../utils/moviesSlice";
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
 
+    const nowPlayingMovies = useSelector(store=>store.movies.nowPlayingMovies)
+
     useEffect( () => {
-        fetchDatawithRetry();
+      !nowPlayingMovies && fetchDatawithRetry();
       }, []
     )
     

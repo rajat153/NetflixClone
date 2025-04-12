@@ -1,5 +1,5 @@
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { localURL, liveURL } from "../../utils/url";
 import  {useEffect} from 'react';
 import { addPopularMovies } from "../../utils/moviesSlice";
@@ -7,9 +7,9 @@ import { addPopularMovies } from "../../utils/moviesSlice";
 
 const usePopularMovies = () => {
     const dispatch = useDispatch();
-
+    const popularMovies = useSelector(store => store.movies.popularMovies)
     useEffect( () => {
-        fetchDatawithRetry();
+        !popularMovies && fetchDatawithRetry();
       }, []
     )
     

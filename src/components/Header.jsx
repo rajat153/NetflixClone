@@ -51,18 +51,18 @@ const Header = () => {
   }
 
   return (
-    <div className='absolute flex justify-between w-screen px-24 py-2 bg-gradient-to-b from-black z-10'>
+    <div className='absolute flex flex-col justify-center items-center md:flex-row md:justify-between w-screen p-2 bg-gradient-to-b from-black z-10'>
         <img className = 'w-44' src={LOGO} alt="netflix logo" />
-        { user && <div className="p-2 flex">
-         {showGptSearch && <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLngChng}>
+        { user && <div className=" flex">
+         {showGptSearch && <select className="pr-1 bg-gray-900 text-white ml-1" onChange={handleLngChng}>
           {SUPPORTED_LNG.map((item)=>{
             return <option key = {item.identifier} value={item.identifier}>{item.name}</option>
           })}
          </select>}
-         <p>{user?.displayName}</p>
-         <button onClick={handleGPTSeach} className="py-2 px-4 mx-4 bg-purple-500 text-white rounded-lg cursor-pointer">{showGptSearch ? 'HomePage' : 'GPT Search' }</button>
+         {/* <p>{user?.displayName}</p> */}
+         <button onClick={handleGPTSeach} className="py-2 px-2 mx-1 bg-purple-500 text-white rounded-lg cursor-pointer">{showGptSearch ? 'HomePage' : 'GPT Search' }</button>
          <img className="w-12" src= {USER_DEFAULT_LOGO} alt="" />
-         <button onClick={handleClick}>SignOut</button>
+         <button className="text-white px-1" onClick={handleClick}>SignOut</button>
         </div>}
     </div>
   )

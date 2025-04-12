@@ -34,10 +34,10 @@ const GptSearchBar = () => {
     dispatch(addGptMoviesResult({movieNames : geminiMovieList , movieResults : resolveResult}))
   }
   return (
-    <div className=' pt-[20%] flex justify-center'>
-        <form className='bg-black w-1/2 grid grid-cols-12' onSubmit={(e)=>e.preventDefault()}>
-            <input ref={searchText} className=' bg-white p-4 m-4 col-span-9' placeholder={lng[lang].searchBarPlaceHolder}/>
-            <button className='col-span-3 py-2 px-4 m-4 bg-red-700 text-white rounded-lg' onClick={handleGptSearch}>{lng[lang].search}</button>
+    <div className='pt-[20%] flex justify-center'>
+        <form className='bg-black w-screen sm:w-1/2 grid grid-cols-6 sm:grid-cols-12' onSubmit={(e)=>e.preventDefault()}>
+            <input ref={searchText} className=' bg-white p-4 m-4 col-span-9 rounded-sm outline-0' placeholder={lng[lang].searchBarPlaceHolder}/>
+            <button className='col-span-6 sm:col-span-3 py-2 px-2 m-4 bg-red-700 text-white rounded-lg' onClick={handleGptSearch}>{lng[lang].search}</button>
         </form>
     </div>
   )
