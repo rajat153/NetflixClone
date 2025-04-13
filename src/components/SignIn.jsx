@@ -95,7 +95,6 @@ const SignIn = () => {
         <p className="text-gray-400 mx-2 text-sm">This page is protected by Google reCAPTCHA to ensure you are not a bot.</p>
         <a href="" className="underline text-blue-600 mx-2 text-sm">Learn more</a>
       </form>
-       <Footer/>
     </div>
   )
 }

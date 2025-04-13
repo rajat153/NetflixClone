@@ -8,7 +8,7 @@ const VideoBackground = ({movieId}) => {
   return (
     <div className='w-full'>
       <iframe  className='w-full aspect-video h-[500px] md:h-[900px]'
-        src={`https://www.youtube.com/embed/${trailerVideo?.key}?&autoplay=1&mute=1&modestbranding=1&controls=0&showinfo=0&rel=0`}
+        src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&modestbranding=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${trailerVideo?.key}`}
         title="YouTube video player" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
